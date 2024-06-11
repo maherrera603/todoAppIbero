@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import com.example.todoapp.Database.UserCallback
 
 
 class MainActivity : ComponentActivity() {
@@ -84,16 +85,21 @@ class MainActivity : ComponentActivity() {
                 return@setOnClickListener
             }
 
-            if ( email != "prueba@prueba.com" || password != "pruebaIbero") {
-                Toast.makeText(this, "El correo y/o contraseaña son invalidos", Toast.LENGTH_LONG).show();
-                return@setOnClickListener
-            }
-
-
-
             // redireccionamiento a home
-            var intent = Intent(this, HomeActivity::class.java);
-            startActivity(intent);
+            val database = Database();
+
+            database.get_user("users", email,  UserCallback { user ->
+                if (user == null || !user.email.equals(email) || !user.password.equals(password)){
+                    Toast.makeText(this, "El correo y/o contraseaña son invalidos", Toast.LENGTH_LONG).show();
+                    return@UserCallback;
+                }
+
+
+                var intent = Intent(this, HomeActivity::class.java).apply {
+                    putExtra("user_email", user.email);
+                };
+                startActivity(intent);
+            });
         }
     }
 

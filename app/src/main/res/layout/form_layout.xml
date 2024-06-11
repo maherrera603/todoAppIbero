@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="580dp"
+    android:background="@drawable/rounded_corner2"
+    tools:ignore="MissingConstraints"
+    >
+
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#0030C2"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="196dp"
+        android:layout_height="34dp"
+        android:layout_alignStart="@+id/view3"
+        android:layout_alignBottom="@+id/view3"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="15dp"
+        android:text="Crear Tarea"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/TextDate"
+        android:layout_width="365dp"
+        android:layout_height="51dp"
+        android:layout_below="@+id/view3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/style_inputs"
+        android:ems="10"
+        android:inputType="text"
+        android:padding="10dp"
+        android:text="Fecha Limite"
+
+        app:layout_constraintHorizontal_bias="0.492"
+
+        app:layout_constraintTop_toBottomOf="@+id/view3"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/titleTask"
+        android:layout_width="365dp"
+        android:layout_height="51dp"
+        android:layout_below="@+id/TextDate"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/style_inputs"
+        android:ems="10"
+        android:inputType="text"
+        android:padding="10dp"
+        android:text="Titulo de la tarea"
+
+        app:layout_constraintHorizontal_bias="0.492"
+
+        app:layout_constraintTop_toBottomOf="@+id/TextDate"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/textDescription"
+        android:layout_width="365dp"
+        android:layout_height="222dp"
+        android:layout_below="@+id/titleTask"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="23dp"
+        android:background="@drawable/style_inputs"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:text="Descripcion de la tarea"
+
+        app:layout_constraintHorizontal_bias="0.492"
+
+        app:layout_constraintTop_toBottomOf="@+id/titleTask"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textDescription"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/style_button"
+        android:text="Registrar Tarea"
+        android:textColor="#fff"
+        app:layout_constraintTop_toBottomOf="@+id/textDescription" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="66dp"
+        android:layout_height="41dp"
+        android:layout_alignBottom="@+id/view3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="14dp"
+        android:layout_toEndOf="@+id/textView3"
+        android:background="#0030C2"
+        android:drawableEnd="@drawable/close"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center" />
+
+
+</RelativeLayout>

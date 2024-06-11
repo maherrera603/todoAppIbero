@@ -2,6 +2,7 @@ package com.example.todoapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
@@ -9,6 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import com.example.todoapp.Database.UserCallback
+import com.example.todoapp.Database.ResultCallback
+import com.example.todoapp.models.User
 
 
 class RegisterActivity : ComponentActivity() {
@@ -95,9 +99,31 @@ class RegisterActivity : ComponentActivity() {
         }
 
 
-        Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
-        val intent = Intent(this, MainActivity::class.java);
-        startActivity(intent);
+        // realizamos la busqueda en la base de datos
+        val database = Database();
+
+        database.get_user("users", email.text.toString(), UserCallback { user ->
+            if (user != null) {
+                Toast.makeText(this, "El usuario se encuentra registrado", Toast.LENGTH_LONG).show();
+                val intent = Intent(this, MainActivity::class.java);
+                startActivity(intent);
+                return@UserCallback;
+            }
+
+            // guardamos los datos del usuario
+            val user = User(name.text.toString(), lastName.text.toString(), phone.text.toString(), email.text.toString(), password.text.toString());
+            database.create_user("users", user, ResultCallback { result ->
+                if (!result) {
+                    Toast.makeText(this, "Error al registrarse, intentelo nuevamente", Toast.LENGTH_LONG).show();
+                    return@ResultCallback;
+                }
+
+                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show();
+                val intent = Intent(this, MainActivity::class.java);
+                startActivity(intent);
+            })
+
+        })
     }
 
 
